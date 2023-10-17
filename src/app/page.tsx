@@ -1,9 +1,11 @@
-import Image from "next/image";
+"use client";
+
+import { UserForm } from "@/app/components";
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            {/*  */}
+        <main className="min-h-screen max-w-3xl mx-auto p-5 md:p-10 lg:p-20">
+            <UserForm />
         </main>
     );
 }
