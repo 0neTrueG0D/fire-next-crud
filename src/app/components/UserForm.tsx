@@ -2,8 +2,23 @@ import React, { useState, useEffect } from "react";
 
 import { Country, State, City } from "country-state-city";
 
-export default function UserForm() {
-    const [form, setForm] = useState({
+interface formData {
+    name: string;
+    email: string;
+    age: string;
+    gender: string;
+    street: string;
+    country: string;
+    state: string;
+    city: string;
+}
+
+interface Props {
+    onSubmit: (data: formData) => void;
+}
+
+export default function UserForm({ onSubmit }: Props) {
+    const [form, setForm] = useState<formData>({
         name: "",
         email: "",
         age: "",
@@ -24,8 +39,7 @@ export default function UserForm() {
                 }));
             }
         }
-        console.log(form);
-    }, [form.country]);
+    }, [form.country]); // run this effect when country changes
 
     useEffect(() => {
         if (form.state) {
@@ -37,8 +51,7 @@ export default function UserForm() {
                 }));
             }
         }
-        console.log(form);
-    }, [form.country, form.state]);
+    }, [form.country, form.state]); // run this effect when country or state changes
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -52,9 +65,7 @@ export default function UserForm() {
 
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        const formData = new FormData(e.target as any);
-        const data = Object.fromEntries(formData);
-        console.log(data);
+        onSubmit(form); // call the parent onSubmit function / pass the form data
     };
     return (
         <div className="border border-neutral rounded-box p-5">
