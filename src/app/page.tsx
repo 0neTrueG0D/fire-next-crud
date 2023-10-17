@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { UserForm } from "@/app/components";
+import { Header, UserForm } from "@/app/components";
 
 interface formData {
     name: string;
@@ -17,8 +17,11 @@ interface formData {
 export default function Home() {
     const getData = (data: formData) => console.log(data);
     return (
-        <main className="min-h-screen max-w-3xl mx-auto p-5 md:p-10 lg:p-20">
-            <UserForm onSubmit={getData} />
-        </main>
+        <>
+            <Header />
+            <main className="min-h-screen max-w-3xl mx-auto">
+                <UserForm onSubmit={getData} />
+            </main>
+        </>
     );
 }
