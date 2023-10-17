@@ -66,9 +66,19 @@ export default function UserForm({ onSubmit }: Props) {
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
         onSubmit(form); // call the parent onSubmit function / pass the form data
+        setForm({
+            name: "",
+            email: "",
+            age: "",
+            gender: "",
+            street: "",
+            country: "",
+            state: "",
+            city: "",
+        });
     };
     return (
-        <div className="border border-neutral rounded-box p-5">
+        <div className="border border-base-content border-opacity-20 rounded-box p-5 w-full">
             <h2 className="mb-5 text-2xl font-bold text-primary text-center">
                 Add User
             </h2>
@@ -81,6 +91,7 @@ export default function UserForm({ onSubmit }: Props) {
                     <input
                         type="text"
                         name="name"
+                        value={form.name}
                         onChange={handleChange}
                         placeholder="Enter user name"
                         className="input input-bordered w-full mt-2"
@@ -91,6 +102,7 @@ export default function UserForm({ onSubmit }: Props) {
                     <input
                         type="email"
                         name="email"
+                        value={form.email}
                         onChange={handleChange}
                         placeholder="Enter user email"
                         className="input input-bordered w-full mt-2"
@@ -102,6 +114,7 @@ export default function UserForm({ onSubmit }: Props) {
                         <input
                             type="number"
                             name="age"
+                            value={form.age}
                             onChange={handleChange}
                             placeholder="Enter user age"
                             className="input input-bordered w-full mt-2"
@@ -112,15 +125,18 @@ export default function UserForm({ onSubmit }: Props) {
                         <select
                             className="select select-bordered w-full mt-2"
                             name="gender"
+                            value={form.gender}
                             onChange={handleChange}
                         >
-                            <option disabled selected>
+                            <option disabled selected value={""}>
                                 Gender
                             </option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
-                            <option>Prefer not to say</option>
+                            <option value={"Male"}>Male</option>
+                            <option value={"Female"}>Female</option>
+                            <option value={"Other"}>Other</option>
+                            <option value={"Prefer not to say"}>
+                                Prefer not to say
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -130,6 +146,7 @@ export default function UserForm({ onSubmit }: Props) {
                         <input
                             type="text"
                             name="street"
+                            value={form.street}
                             onChange={handleChange}
                             placeholder="Street name"
                             className="input input-bordered w-full mt-2"
@@ -186,9 +203,10 @@ export default function UserForm({ onSubmit }: Props) {
                         <select
                             className="select select-bordered w-full mt-2"
                             name="city"
+                            value={form.city}
                             onChange={handleChange}
                         >
-                            <option disabled selected>
+                            <option disabled selected value={""}>
                                 City
                             </option>
                             {City.getCitiesOfState(
