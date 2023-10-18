@@ -8,23 +8,15 @@ export default function NavTab() {
             <div className="tabs tabs-boxed">
                 <Link
                     href="/"
-                    className={
-                        pathname === "/"
-                            ? "tab md:tab-lg tab-active"
-                            : "tab md:tab-lg"
-                    }
+                    className={pathname === "/" ? "tab tab-active" : "tab"}
                 >
                     User Creation Form
                 </Link>
                 <Link
                     href="/data"
-                    className={
-                        pathname === "/data"
-                            ? "tab md:tab-lg tab-active"
-                            : "tab md:tab-lg"
-                    }
+                    className={pathname === "/data" ? "tab tab-active" : "tab"}
                 >
-                    All User Data Table
+                    All Users Data Table
                 </Link>
             </div>
         </div>
