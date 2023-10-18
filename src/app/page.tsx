@@ -1,8 +1,7 @@
 "use client";
+import Link from "next/link";
 
-import React from "react";
-
-import { Header, UserForm } from "@/app/components";
+import { UserForm } from "@/app/components/client";
 
 interface formData {
     name: string;
@@ -17,11 +16,18 @@ interface formData {
 export default function Home() {
     const getData = (data: formData) => console.log(data);
     return (
-        <>
-            <Header />
-            <main className="min-h-screen max-w-3xl mx-auto">
-                <UserForm onSubmit={getData} />
-            </main>
-        </>
+        <main className="min-h-screen max-w-3xl mx-auto">
+            <div className="flex justify-center w-full mb-5">
+                <div className="tabs tabs-boxed">
+                    <Link href="/" className="tab tab-lg tab-active">
+                        User Creation Form
+                    </Link>
+                    <Link href="/data" className="tab tab-lg">
+                        All User Data Table
+                    </Link>
+                </div>
+            </div>
+            <UserForm onSubmit={getData} />
+        </main>
     );
 }
