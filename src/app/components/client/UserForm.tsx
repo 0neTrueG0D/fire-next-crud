@@ -1,27 +1,17 @@
 import React, { useState, useEffect } from "react";
 
 import { Country, State, City } from "country-state-city";
-
-interface formData {
-    name: string;
-    email: string;
-    age: string;
-    gender: string;
-    street: string;
-    country: string;
-    state: string;
-    city: string;
-}
+import { userData } from "@/app/utils/interfaces";
 
 interface Props {
     onSubmit: (
-        data: formData,
-        setData: React.Dispatch<React.SetStateAction<formData>>
+        data: userData,
+        setData: React.Dispatch<React.SetStateAction<userData>>
     ) => void;
 }
 
 export default function UserForm({ onSubmit }: Props) {
-    const [form, setForm] = useState<formData>({
+    const [form, setForm] = useState<userData>({
         name: "",
         email: "",
         age: "",

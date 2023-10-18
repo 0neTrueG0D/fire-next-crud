@@ -4,21 +4,12 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 
 import { UserForm, NavTab } from "@/app/components/client";
+import { userData } from "@/app/utils/interfaces";
 
-interface formData {
-    name: string;
-    email: string;
-    age: string;
-    gender: string;
-    street: string;
-    country: string;
-    state: string;
-    city: string;
-}
 export default function Home() {
     const getData = async (
-        data: formData,
-        setData: React.Dispatch<React.SetStateAction<formData>>
+        data: userData,
+        setData: React.Dispatch<React.SetStateAction<userData>>
     ) => {
         console.log(data);
 
@@ -31,9 +22,7 @@ export default function Home() {
             age !== "" &&
             gender !== "" &&
             street !== "" &&
-            country !== "" &&
-            state !== "" &&
-            city !== ""
+            country !== ""
         ) {
             try {
                 await addDoc(collection(db, "users"), {
