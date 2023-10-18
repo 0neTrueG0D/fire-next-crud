@@ -80,46 +80,50 @@ export default function UserForm({ onSubmit }: Props) {
                 className="w-full flex flex-col gap-5"
             >
                 <div className="w-full">
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Name*</label>
                     <input
                         type="text"
                         name="name"
                         value={form.name}
                         onChange={handleChange}
+                        required
                         placeholder="Enter user name"
                         className="input input-bordered w-full mt-2"
                     />
                 </div>
                 <div className="w-full">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Email*</label>
                     <input
                         type="email"
                         name="email"
                         value={form.email}
                         onChange={handleChange}
+                        required
                         placeholder="Enter user email"
                         className="input input-bordered w-full mt-2"
                     />
                 </div>
                 <div className="grid grid-cols-2 gap-5 w-full">
                     <div className="w-full">
-                        <label htmlFor="age">Age</label>
+                        <label htmlFor="age">Age*</label>
                         <input
                             type="number"
                             name="age"
                             value={form.age}
                             onChange={handleChange}
+                            required
                             placeholder="Enter user age"
                             className="input input-bordered w-full mt-2"
                         />
                     </div>
                     <div className="w-full">
-                        <label htmlFor="gender">Gender</label>
+                        <label htmlFor="gender">Gender*</label>
                         <select
                             className="select select-bordered w-full mt-2"
                             name="gender"
                             value={form.gender}
                             onChange={handleChange}
+                            required
                         >
                             <option disabled selected value={""}>
                                 Gender
@@ -135,23 +139,25 @@ export default function UserForm({ onSubmit }: Props) {
                 </div>
                 <div className="grid grid-cols-2 gap-5 w-full">
                     <div className="w-full">
-                        <label htmlFor="street">Street</label>
+                        <label htmlFor="street">Street*</label>
                         <input
                             type="text"
                             name="street"
                             value={form.street}
                             onChange={handleChange}
+                            required
                             placeholder="Street name"
                             className="input input-bordered w-full mt-2"
                         />
                     </div>
                     <div className="w-full">
-                        <label htmlFor="country">Country</label>
+                        <label htmlFor="country">Country*</label>
                         <select
                             className="select select-bordered w-full mt-2"
                             name="country"
                             value={form.country}
                             onChange={handleChange}
+                            required
                         >
                             <option disabled selected value={""}>
                                 Country
@@ -213,7 +219,9 @@ export default function UserForm({ onSubmit }: Props) {
                         </select>
                     </div>
                 </div>
-                <button className="btn btn-primary"> Submit </button>
+                <button type="submit" className="btn btn-primary">
+                    Submit
+                </button>
             </form>
         </div>
     );
