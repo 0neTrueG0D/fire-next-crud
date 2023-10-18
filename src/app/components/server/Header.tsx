@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header() {
+export default function Header() {
     return (
         <div className="w-full border-b border-b-base-content border-opacity-20 mb-5">
             <div className="max-w-3xl mx-auto flex justify-between items-center p-5">
@@ -31,5 +31,3 @@ function Header() {
         </div>
     );
 }
-
-export default Header;
