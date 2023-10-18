@@ -14,7 +14,10 @@ interface formData {
 }
 
 interface Props {
-    onSubmit: (data: formData) => void;
+    onSubmit: (
+        data: formData,
+        setData: React.Dispatch<React.SetStateAction<formData>>
+    ) => void;
 }
 
 export default function UserForm({ onSubmit }: Props) {
@@ -65,17 +68,7 @@ export default function UserForm({ onSubmit }: Props) {
 
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        onSubmit(form); // call the parent onSubmit function / pass the form data
-        setForm({
-            name: "",
-            email: "",
-            age: "",
-            gender: "",
-            street: "",
-            country: "",
-            state: "",
-            city: "",
-        });
+        onSubmit(form, setForm); // call the parent onSubmit function / pass the form data
     };
     return (
         <div className="border border-base-content border-opacity-20 rounded-box p-5 w-full">
