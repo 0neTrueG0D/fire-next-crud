@@ -1,13 +1,23 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function Header() {
+    const [theme, setTheme] = useState("forest");
+    const toggleTheme = () => {
+        setTheme(theme === "forest" ? "winter" : "forest");
+    };
+    useEffect(() => {
+        const htmlElement = document.querySelector("html");
+        if (htmlElement) {
+            htmlElement.setAttribute("data-theme", theme);
+        }
+    }, [theme]);
     return (
         <div className="w-full border-b border-b-base-content border-opacity-20 mb-5">
             <div className="max-w-3xl mx-auto flex justify-between items-center p-5">
                 <div className="text-4xl">🐣</div>
                 <label className="swap swap-rotate">
                     {/* this hidden checkbox controls the state */}
-                    <input type="checkbox" />
+                    <input type="checkbox" onClick={toggleTheme} />
 
                     {/* sun icon */}
                     <svg
