@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 
+import toast, { Toaster } from "react-hot-toast";
+
 import { UserForm, NavTab } from "@/app/components/client";
 import { userData } from "@/app/utils/interfaces";
 
@@ -41,7 +43,7 @@ export default function EditUserData() {
                     state: state,
                     city: city,
                 });
-                console.log("Document updated successfully!");
+                toast.success("Successfully updated User!");
                 setData({
                     name: "",
                     email: "",
@@ -58,9 +60,26 @@ export default function EditUserData() {
         }
     };
     return (
-        <main className="max-w-3xl mx-auto">
-            <NavTab />
-            <UserForm onSubmit={getData} />
-        </main>
+        <>
+            <Toaster
+                position="top-center"
+                toastOptions={{
+                    success: {
+                        style: {
+                            background: "green",
+                        },
+                    },
+                    error: {
+                        style: {
+                            background: "red",
+                        },
+                    },
+                }}
+            />
+            <main className="max-w-3xl mx-auto">
+                <NavTab />
+                <UserForm onSubmit={getData} />
+            </main>
+        </>
     );
 }

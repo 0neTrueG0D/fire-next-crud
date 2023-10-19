@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
+import toast, { Toaster } from "react-hot-toast";
+
 import {
     collection,
     doc,
@@ -34,10 +36,26 @@ export default function UserDataTable() {
     // delete data from firestore
     const deleteData = async (id: string) => {
         await deleteDoc(doc(db, "users", id));
+        toast.success("Successfully deleted User!");
     };
 
     return (
         <div className="overflow-auto border border-base-content border-opacity-20 rounded-box p-5 w-full max-h-[36rem]">
+            <Toaster
+                position="top-center"
+                toastOptions={{
+                    success: {
+                        style: {
+                            background: "green",
+                        },
+                    },
+                    error: {
+                        style: {
+                            background: "red",
+                        },
+                    },
+                }}
+            />
             <table className="table">
                 {/* head */}
                 <thead>

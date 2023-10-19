@@ -2,6 +2,7 @@
 
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
+import toast, { Toaster } from "react-hot-toast";
 
 import { UserForm, NavTab } from "@/app/components/client";
 import { userData } from "@/app/utils/interfaces";
@@ -35,7 +36,7 @@ export default function Home() {
                     state: state,
                     city: city,
                 });
-                console.log("Document successfully written!");
+                toast.success("Successfully added User!");
                 setData({
                     name: "",
                     email: "",
@@ -47,14 +48,31 @@ export default function Home() {
                     city: "",
                 });
             } catch (error) {
-                console.error("Error adding document: ", error);
+                toast.error("Something went wrong");
             }
         }
     };
     return (
-        <main className="max-w-3xl mx-auto">
-            <NavTab />
-            <UserForm onSubmit={getData} />
-        </main>
+        <>
+            <Toaster
+                position="top-center"
+                toastOptions={{
+                    success: {
+                        style: {
+                            background: "green",
+                        },
+                    },
+                    error: {
+                        style: {
+                            background: "red",
+                        },
+                    },
+                }}
+            />
+            <main className="max-w-3xl mx-auto">
+                <NavTab />
+                <UserForm onSubmit={getData} />
+            </main>
+        </>
     );
 }

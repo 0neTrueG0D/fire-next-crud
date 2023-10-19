@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 import { Country, State, City } from "country-state-city";
 import { userData } from "@/app/utils/interfaces";
@@ -60,10 +61,12 @@ export default function UserForm({ onSubmit }: Props) {
         e.preventDefault();
         onSubmit(form, setForm); // call the parent onSubmit function / pass the form data
     };
+
+    const pathname = usePathname();
     return (
         <div className="border border-base-content border-opacity-20 rounded-box p-5 w-full">
             <h2 className="mb-5 text-2xl font-bold text-primary text-center">
-                Add User
+                {pathname.includes("/data/edit/") ? "Edit" : "Create"} User
             </h2>
             <form
                 onSubmit={handleSubmit}
