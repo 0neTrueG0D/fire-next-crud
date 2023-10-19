@@ -1,6 +1,6 @@
 "use client";
 
-import { NavTab, UserDataTable } from "@/app/components/client";
+import { NavTab, UserDataTable } from "@/app/components";
 
 export default function UserData() {
     return (

@@ -1,10 +1,8 @@
-"use client";
-
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 import toast, { Toaster } from "react-hot-toast";
 
-import { UserForm, NavTab } from "@/app/components/client";
+import { UserForm, NavTab } from "@/app/components";
 import { userData } from "@/app/utils/interfaces";
 
 export default function Home() {

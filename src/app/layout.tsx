@@ -1,15 +1,10 @@
-import type { Metadata } from "next";
+"use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import { Header } from "@/app/components/server";
+import { Header } from "@/app/components";
 
 const inter = Inter({ subsets: ["latin"], display: "block" });
-
-export const metadata: Metadata = {
-    title: "Firebase Next.js CRUD",
-    description: "Firebase Next.js CRUD",
-};
 
 export default function RootLayout({
     children,
